@@ -52,54 +52,129 @@ Ranges can be set (RSSI)
 UUID – unique id used for identification of Services and Characteristics
 Scheme below can be useful when creating mobile app.
 
+![image](https://user-images.githubusercontent.com/26284578/62289829-93810d80-b481-11e9-80eb-188eadb08ab8.png)
 
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-How BlueGate works? 
-BlueGate scans for devices which has service with UUID “ba10” and connects to this device. Next, it tries to connect to the characteristics “ba30” if there is no such characteristics it disconnects from the connected device (or can be restarted). Each characteristic has values which can be read and written. BlueGate reads value of “ba30” and check if it matches with password. If password is correct door will be opened, otherwise it will not be opened. After checking password, it will disconnect from device and ESP will be restarted to avoid RAM memory problems. 
-Each BlueGate device has serial password (constant) which can give access to the Admin mode. If “ba30” value matches with serial password, it opens Admin mode, more specifically it will try to access and read values of “ba40” and “ba50”. Password will be changed to value of “ba40” if it differs from current password. Value of “ba50” sets the mode of the BlueGate. If “ba30” value.
+### How BlueGate works? 
+<p>BlueGate scans for devices which has service with UUID “ba10” and connects to this device. Next, it tries to connect to the characteristics “ba30” if there is no such characteristics it disconnects from the connected device (or can be restarted). Each characteristic has values which can be read and written. BlueGate reads value of “ba30” and check if it matches with password. If password is correct door will be opened, otherwise it will not be opened. After checking password, it will disconnect from device and ESP will be restarted to avoid RAM memory problems.</p> 
+<p>Each BlueGate device has serial password (constant) which can give access to the Admin mode. If “ba30” value matches with serial password, it opens Admin mode, more specifically it will try to access and read values of “ba40” and “ba50”. Password will be changed to value of “ba40” if it differs from current password. Value of “ba50” sets the mode of the BlueGate. If “ba30” value.</p></br>
 Current password is 123456, mode is “tap”, serial password is 060593
-	ba30 value	ba40 value 	ba50 value 	Result
-User 	123456	Don’t care	Don’t care	Door opens
-	111111	Don’t care	Don’t care	Door is not opened
-Adding MAC	mac	Don’t care	Don’t care	In the next loop, adds device close to BlueGate
-Admin 	060593	654321	tap	Password is changed to 654321
-Admin	060593	123456	touch	Mode is change to touch
+<table style="width:100%">
+  <tr>
+    <th></th>
+    <th>ba30 value</th> 
+    <th>ba40 value</th>
+    <th>ba50 value</th>
+    <th>Result</th>
+  </tr>
+  <tr>
+    <td>User</td>
+    <td>123456</td>
+    <td>Don't care</td>
+    <td>Don't care</td>
+    <td>Door opens</td>
+  </tr>
+  <tr>
+    <td>User</td>
+    <td>111111</td>
+    <td>Don't care</td>
+    <td>Don't care</td>
+    <td>Door doesn't open</td>
+  </tr>
+  <tr>
+    <td>Adding MAC</td>
+    <td>mac</td>
+    <td>Don't care</td>
+    <td>Don't care</td>
+    <td>In the next loop, adds device close to BlueGate</td>
+  </tr>
+  <tr>
+    <td>Admin</td>
+    <td>060593</td>
+    <td>654321</td>
+    <td>tap</td>
+    <td>Password changes to 654321</td>
+  </tr>
+  <tr>
+    <td>Admin</td>
+    <td>060593</td>
+    <td>123456</td>
+    <td>touch</td>
+    <td>Mode changes to touch</td>
+  </tr>
+</table>
 
-BlueGate Flash System
-Preferences:
-Preferences provides persistent (across resets) but mutable storage of various types of variables. It is similar to EEPROM library in Arduino, but more simple. 
+### BlueGate Flash System
+Preferences:</br>
+Preferences provides persistent (across resets) but mutable storage of various types of variables. It is similar to EEPROM library in Arduino, but more simple.</br> 
 SPIFFS is a file system that can manage flash memory of a device.
-Name	File System	Data type	Purpose
-password	Preferences	String	Storing password
-mode 	Preferences	String 	Strong mode
-addMode	Preferences	bool 	Adding mac address of a device
-mac.txt	SPIFFS	text	Store mac addresses of devices
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>File System</th> 
+    <th>Data type</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <td>password</td>
+    <td>Preferences</td>
+    <td>String</td>
+    <td>Storing password</td>
+  </tr>
+  <tr>
+    <td>mode</td>
+    <td>Preferences</td>
+    <td>String</td>
+    <td>Storing mode</td>
+  </tr>
+  <tr>
+    <td>addMode</td>
+    <td>Preferences</td>
+    <td>bool</td>
+    <td>Adding mac address of a device</td>
+  </tr>
+  <tr>
+    <td>mac.txt</td>
+    <td>SPIFFS</td>
+    <td>text</td>
+    <td>Storing mac addresses of devices</td>
+  </tr>
+	
+</table>
+
 
 Each time ESP32 restarts it reads all necessary information from the flash memory.
  
-Used libraries
+### Used libraries
 All used libraries are in folder, while doing project I used Platformio IDE.
-Library name	Usage
-ESP32_BLE_Arduino	BLE, slightly differs from original library
-SPIFFS	File system manager of flash memory
-Preferences	Like EEPROM, used to store variables
-Wire	Library to use I2C to display
-SSD1306Wire	OLED display library
+<table style="width:100%">
+  <tr>
+    <th>Library</th>
+    <th>Use</th> 
+  </tr>
+  <tr>
+    <td>ESP32_BLE_Arduino</td>
+    <td>BLE, slightly differs from original library</td>
+  </tr>
+  <tr>
+    <td>SPIFFS</td>
+    <td>File system manager of flash memory</td>
+  </tr>	
+  <tr>
+    <td>Preferences</td>
+    <td>Similar to EEPROM, used to store variables</td>
+  </tr>
+  <tr>
+    <td>Wire</td>
+    <td>Library to use I2C to display</td>
+  </tr>
+  <tr>
+    <td>SSD1306Wire</td>
+    <td>OLED display library</td>
+  </tr>
+ </table>
+	
 
-OLED Display Examples
-                  
+### OLED Display Examples
+![image](https://user-images.githubusercontent.com/26284578/62290473-430aaf80-b483-11e9-91ce-3954faae56eb.png)
+
 
