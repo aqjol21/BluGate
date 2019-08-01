@@ -1,32 +1,42 @@
 # BluGate
-## Goal:
+### Goal:
+<ul>
+<li> Opening door/gate with Bluetooth or Bluetooth Low Energy (BLE) connection without any app (queen, ideal case)</li>
+<li> Opening door/gate with Bluetooth or BLE </li>
+<li> Opening door/gate by MAC address with BLE devices such as smart bands, smart watches working with BLE protocol</li>
+<li> Different modes</li>
+<li> Admin mode for changing password, changing modes, adding other ble devices by its MAC address</li>
+</ul>
 
-•	Opening door/gate with Bluetooth or Bluetooth Low Energy (BLE) connection without any app (queen, ideal case)
-•	Opening door/gate with Bluetooth or BLE 
-•	Opening door/gate by MAC address with BLE devices such as smart bands, smart watches working with BLE protocol
-•	Different modes
-•	Admin mode for changing password, changing modes, adding other ble devices by its MAC address
-Esp32 as a Client (Central or Scanner)
-•	Can scan and add mac addresses which can connect (mi band, other devices can open)
-•	get RSSI is simple 
-•	ios 5+ is supported?
-•	android 6+ supported? (some android 5 is supported depending on chip)
-
-Esp32 as a Server (Peripheral or Advertiser)
-•	Older device can connect
-•	Multiconnect (quantity?)
-•	Sending rssi from phone, and disconnect if needed? (library should change sligthly to disconnect phone)
-•	hard to get RSSI (didn't know yet how)
-•	android 4.33+ supported
-•	ios 5+ is supported
-
-Web Bluetooth
-•	Access from some of the browsers (Chrome, Opera)
-•	Some of the Android devices supporter
-•	IOS is not supported
+### Esp32 as a Client (Central or Scanner)
+<ul>
+<li> Can scan and add mac addresses which can connect (mi band, other devices can open)</li>
+<li> get RSSI is simple </li>
+<li> ios 5+ is supported?</li>
+<li> android 6+ supported? (some android 5 is supported depending on chip)</li>
+</ul>
 
 
-Modes:
+### Esp32 as a Server (Peripheral or Advertiser)
+<ul>
+<li> Older device can connect</li>
+<li> Multiconnect (quantity?)</li>
+<li> Sending rssi from phone, and disconnect if needed? (library should change sligthly to disconnect phone)</li>
+<li> hard to get RSSI (didn't know yet how)</li>
+<li> android 4.33+ supported</li>
+<li> ios 5+ is supported</li>
+</ul>
+
+### Web Bluetooth
+<ul>
+<li> Access from some of the browsers (Chrome, Opera)</li>
+<li> Some of the Android devices supporter</li>
+<li> IOS is not supported</li>
+</ul>
+
+
+
+### Modes:
 Ranges can be set (RSSI)
 1.	Tap. Bringing your phone close to the door, just like tapping (current range is 10 cm)
 2.	Touch. Have more range of 1-1.5 meters, touch sensor can be set
@@ -35,7 +45,9 @@ Ranges can be set (RSSI)
 
 
 
-What is BLE? https://centare.com/blog/2019/03/what_is_bluetooth_low_energy/
+### What is BLE? https://centare.com/blog/2019/03/what_is_bluetooth_low_energy/
+ ![image](https://user-images.githubusercontent.com/26284578/62289733-456c0a00-b481-11e9-8272-7c54b28adca0.png)
+ 
  
 UUID – unique id used for identification of Services and Characteristics
 Scheme below can be useful when creating mobile app.
